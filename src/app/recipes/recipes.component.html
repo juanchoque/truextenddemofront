@@ -1,0 +1,85 @@
+<h4>COOKING RECIPES</h4>
+<hr>
+
+<div class="row" style="margin: 10px">
+    <div class="col-md-6">
+        <fieldset>
+            <legend>Register recipe</legend>
+            <div class="form-group">
+              <label for="name">Name recipe *</label>
+              <input type="text" class="form-control" [(ngModel)]="recipe.name" id="name" aria-describedby="emailHelp" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="enpassword">Preparation *</label>
+              <textarea type="text" class="form-control" [(ngModel)]="recipe.preparation" id="preparation" placeholder="Preparation"> </textarea>
+            </div>
+            
+        </fieldset>
+    </div>
+
+    <div class="col-md-6">
+        <legend>Ingredients</legend>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">
+                  <button type="button" class="btn btn-outline-success">+</button>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                    <textarea type="text" class="form-control" [(ngModel)]="recipe.preparation" id="preparation" placeholder="Preparation"> </textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary">-</button>
+                </td>
+              </tr>
+            </tbody>
+          </table> 
+    </div>
+
+    <div>{{messOperationSave}}</div>
+    <button type="button" [disabled]="disableButtonSave" (click)="onSave()" class="btn btn-success">Save</button>
+</div>
+
+<div class="row" style="margin: 10px">
+  <div class="col-md-4">
+      <button type="button" *ngIf="idAccount != ''"  (click)="onCreate()" class="btn btn-success">Create Recipe</button>
+  </div>
+  <div class="col-md-4">
+      <div class="btn-group btn-group-toggle" *ngIf="idAccount != ''" data-toggle="buttons">
+        <label class="btn btn-info">
+          <button class="btn-info" type="button"  (click)="onAllRecipes()" autocomplete="off"> All cooking recipes</button>
+        </label>
+        <label class="btn btn-success">
+          <button class="btn-success" type="button"  (click)="onMyRecipes()" autocomplete="off"> My cooking recipes </button>
+        </label>
+      </div>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-8">
+            <input class="form-control mr-sm-2" [(ngModel)]="recipesTextSearch.name" type="text" placeholder="Search">
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-secondary my-2 my-sm-0"  (click)="onSearch()" type="submit">Search</button>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="card border-primary mb-12" *ngFor="let recipe of recipes">
+  <div class="card-body">
+    <h4 class="card-title">{{recipe.name}}</h4>
+    <p class="card-text">{{recipe.preparation}}</p>
+    <div>
+        <button type="button"  (click)="onDelete(recipe)" *ngIf="idAccount == recipe.accounts.id" class="btn btn-primary">Delete</button>
+        <button type="button"  (click)="onEdit(recipe)" *ngIf="idAccount == recipe.accounts.id" class="btn btn-secondary">Edit</button>
+        <button type="button"  (click)="onInfo(recipe)" class="btn btn-info">Info</button>
+    </div>
+  </div>
+</div>
+  

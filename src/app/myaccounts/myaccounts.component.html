@@ -1,0 +1,52 @@
+<section>
+  <div class="row" style="margin-left: 10px">
+      <div class="col-sm-5 fill-center">
+          <fieldset>
+            <legend>Sign in</legend>
+            <div class="form-group">
+              <label for="enmail">Email address</label>
+              <input type="email" class="form-control" [(ngModel)]="accLogin.email" id="enmail" aria-describedby="emailHelp" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+              <label for="enpassword">Password</label>
+              <input type="password" class="form-control" [(ngModel)]="accLogin.password" id="enpassword" placeholder="Password">
+            </div>
+
+            <div>{{messOperationLogin}}</div>
+
+            <button type="button" [disabled]="disableButtonLogin" (click)="onLogin()" class="btn btn-success">Login</button>
+          </fieldset>
+        </div>
+      
+        <div class="col-sm-5 fill-center" style="margin-right: 10px">
+            <fieldset>
+              <legend>Create Account</legend>
+              <div class="form-group">
+                <label for="firstname">First Name *</label>
+                <input type="text" [(ngModel)]="accounts.firstName" required class="form-control" id="firstname" placeholder="First Name">
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" [(ngModel)]="accounts.lastName" class="form-control" id="lastname" placeholder="Last Name">
+              </div>
+              <div class="form-group">
+                <label for="birthdate">Birth Date *</label>
+                <input type="date" [(ngModel)]="accounts.birthDate" class="form-control" id="birthdate" placeholder="">
+              </div>
+              <div class="form-group">  
+                <label for="email">Email address *</label>
+                <input type="email" [(ngModel)]="accounts.email" required class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@example.com">
+              </div>
+              <div class="form-group"> 
+                <label for="password">Password *</label>
+                <input type="password" [(ngModel)]="accounts.password" class="form-control" id="password" placeholder="Password">
+              </div>
+
+              <div>{{messOperationCAccount}}</div>
+      
+              <button type="button" [disabled]="disableButtonCAccount" (click)="onSubmit()" class="btn btn-primary">Create Account</button>
+            </fieldset>
+            
+        </div>
+  </div>
+</section>
