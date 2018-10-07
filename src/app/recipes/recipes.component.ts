@@ -38,6 +38,21 @@ export class RecipesComponent implements OnInit {
   //events
   //create new recipe
   onCreate(){
+      this.recipe = new Recipes();
+  }
+
+  //add ingredients
+  onMoreIngredients(){
+
+  }
+
+  //remove ingredients
+  onDeleteIngredients(){
+
+  }
+
+  //save recipe
+  onSave(){
 
   }
 

@@ -24,17 +24,17 @@
               <tr>
                 <th scope="col">Description</th>
                 <th scope="col">
-                  <button type="button" class="btn btn-outline-success">+</button>
+                  <button type="button" (click)="onMoreIngredients()" class="btn btn-outline-success">+</button>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let ingredient of recipe.listIngredients">
                 <td>
                     <textarea type="text" class="form-control" [(ngModel)]="recipe.preparation" id="preparation" placeholder="Preparation"> </textarea>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-outline-primary">-</button>
+                    <button type="button" (click)="onDeleteIngredients()" class="btn btn-outline-primary">-</button>
                 </td>
               </tr>
             </tbody>
