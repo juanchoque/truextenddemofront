@@ -21,9 +21,23 @@ export class MyaccountsComponent implements OnInit {
   public disableButtonLogin:boolean = false;
   public messOperationLogin:string = '';
 
+  //for set visible dom
+  public inVisibleAccount:boolean = false;
+  public inVisibleMyAccount:boolean = true;
+
+  //data for my account
+  public myAccounts:Accounts;
+  public messOperationMyAccount:string;
+  public disableButtonMyAccount:boolean = false;
+
+  //account data
+  public idAccount:string = '';
+
   constructor(private _accountsService:AccountsService, private router: Router) { }
 
   ngOnInit() {
+    this.idAccount = localStorage.getItem("idAccount");
+
     this.accounts = new Accounts();
     this.disableButtonCAccount = false;
     this.messOperationCAccount = '';
@@ -31,6 +45,11 @@ export class MyaccountsComponent implements OnInit {
     this.accLogin = new Accounts();
     this.disableButtonLogin = false;
     this.messOperationLogin = '';
+
+    this.myAccounts = new Accounts();
+    this.messOperationMyAccount = '';
+    this.disableButtonMyAccount = false;
+
   }
 
 
@@ -49,6 +68,10 @@ export class MyaccountsComponent implements OnInit {
           this.messOperationCAccount = 'Error when registering the account (the account is already registered)';
         }
     );
+  }
+
+  onMySubmit(){
+
   }
 
   onLogin(){
